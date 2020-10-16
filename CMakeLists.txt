@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
     message_generation
     pcl_ros
     roscpp
+    tf
 )
 
 find_package(PCL 1.9 REQUIRED)
