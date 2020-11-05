@@ -31,6 +31,9 @@ include_directories(
 
 set(SOURCE_CODE
     src/main.cc
+    src/pointcloudaccumulator/accumulate.cc
+    src/pointcloudaccumulator/pointcloudaccumulator1.cc
+    src/pointcloudaccumulator/radiusfilter.cc
 )
 
 add_executable(${PROJECT_NAME}_node ${SOURCE_CODE})

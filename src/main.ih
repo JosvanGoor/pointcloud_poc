@@ -1,0 +1,22 @@
+#include <iostream> // should prolly use ROS_INFO
+
+/***** ROS INCLUDES *****/
+#include "ros/ros.h"
+// #include "ros/console.h"
+// #include "pcl_ros/transforms.h"
+#include "pcl_ros/publisher.h"
+#include "pcl_conversions/pcl_conversions.h"
+
+/***** MSG INCLUDES *****/
+#include "sensor_msgs/PointCloud2.h"
+#include "geometry_msgs/TransformStamped.h"
+
+/***** PCL INCLUDES *****/
+#include "pcl-1.9/pcl/point_types.h"
+#include "pcl-1.9/pcl/conversions.h"
+#include "pcl-1.9/pcl/filters/voxel_grid.h"
+
+/***** REST *****/
+#include "tf/transform_listener.h"
+
+#include "pointcloudaccumulator/pointcloudaccumulator.h"
