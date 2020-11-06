@@ -5,5 +5,4 @@ PointCloudAccumulator::PointCloudAccumulator()
     d_kdtree(true)
 {
     d_pointcloud = boost::make_shared<PointCloud>();
-    d_kdtree.setInputCloud(d_pointcloud);
 }

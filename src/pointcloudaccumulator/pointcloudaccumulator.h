@@ -30,6 +30,8 @@ class PointCloudAccumulator
         PointCloudAccumulator();
         void accumulate(sensor_msgs::PointCloud2 const &cloud);
 
+        PointCloudPTR &pointcloud();
+
     private:
         // no copies
         PointCloudAccumulator(PointCloudAccumulator const &) = delete;
