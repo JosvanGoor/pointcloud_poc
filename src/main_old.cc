@@ -28,6 +28,7 @@ class Thingamajig
 {
     tf::TransformListener d_tflistener;
     PointCloudPtr d_master_cloud;
+    
 
     public:
         Thingamajig()
@@ -41,8 +42,8 @@ class Thingamajig
             geometry_msgs::TransformStamped transform;
 
             // auto newcloud = ros::topic::waitForMessage<sensor_msgs::PointCloud2>("/xtion/depth_registered/points", ros::Duration(1.0));
-            d_tflistener.waitForTransform("/base_link", cloud.header.frame_id, ros::Time(0), ros::Duration(1.0));
-            pcl_ros::transformPointCloud("/base_link", cloud, post_tf, d_tflistener);
+            d_tflistener.waitForTransform("/map", cloud.header.frame_id, ros::Time(0), ros::Duration(1.0));
+            pcl_ros::transformPointCloud("/map", cloud, post_tf, d_tflistener);
             
             pcl::PCLPointCloud2 pcl_pc2;
             pcl_conversions::toPCL(post_tf, pcl_pc2);

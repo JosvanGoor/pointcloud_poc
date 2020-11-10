@@ -4,8 +4,12 @@ void PointCloudAccumulator::accumulate(sensor_msgs::PointCloud2 const &cloud)
 {
     pcl::PCLPointCloud2::Ptr pcl_pc2 = boost::make_shared<pcl::PCLPointCloud2>();
     pcl::PCLPointCloud2::Ptr filtered = boost::make_shared<pcl::PCLPointCloud2>();;
-    
-    pcl_conversions::toPCL(cloud, *pcl_pc2);
+    sensor_msgs::PointCloud2 post_tf;
+
+    d_tflistener.waitForTransform("/base_link", cloud.header.frame_id, ros::Time(0), ros::Duration(1.0));
+    pcl_ros::transformPointCloud("/base_link", cloud, post_tf, d_tflistener);
+
+    pcl_conversions::toPCL(post_tf, *pcl_pc2);
     
     pcl::VoxelGrid<pcl::PCLPointCloud2> filter;
     filter.setInputCloud(pcl_pc2);
@@ -17,4 +21,8 @@ void PointCloudAccumulator::accumulate(sensor_msgs::PointCloud2 const &cloud)
 
     radius_filter(converted, 0.1);
     ROS_INFO("Currently have %lu points stored.\n", d_pointcloud->size());
+
+    d_pointcloud->header.frame_id = "base_link";
+    pcl_conversions::toPCL(ros::Time::now(), d_pointcloud->header.stamp);
+    d_publisher.publish(d_pointcloud);
 }

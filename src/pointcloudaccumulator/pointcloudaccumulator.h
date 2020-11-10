@@ -1,19 +1,19 @@
 #ifndef POINTCLOUDPOC_PCACCUMULATOR_H
 #define POINTCLOUDPOC_PCACCUMULATOR_H
 
-#include "ros/ros.h"
-#include "pcl_ros/publisher.h"
-#include "pcl_conversions/pcl_conversions.h"
-
-#include "sensor_msgs/PointCloud2.h"
 #include "geometry_msgs/TransformStamped.h"
-
+#include "pcl_ros/point_cloud.h"
+#include "pcl_ros/publisher.h"
+#include "pcl_ros/transforms.h"
+#include "pcl_conversions/pcl_conversions.h"
 #include "pcl-1.9/pcl/point_types.h"
 #include "pcl-1.9/pcl/conversions.h"
 #include "pcl-1.9/pcl/search/kdtree.h"
 #include "pcl-1.9/pcl/filters/voxel_grid.h"
-
+#include "ros/ros.h"
+#include "sensor_msgs/PointCloud2.h"
 #include "tf/transform_listener.h"
+
 #include <memory>
 
 using Point = pcl::PointXYZ;
@@ -25,12 +25,14 @@ class PointCloudAccumulator
 {
     PointCloudPtr d_pointcloud;
     KdTree d_kdtree;
+    ros::Publisher d_publisher;
+    tf::TransformListener d_tflistener;
 
     public:
         PointCloudAccumulator();
         void accumulate(sensor_msgs::PointCloud2 const &cloud);
 
-        PointCloudPTR &pointcloud();
+        // PointCloudPTR &pointcloud();
 
     private:
         // no copies
