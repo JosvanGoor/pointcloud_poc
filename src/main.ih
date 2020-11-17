@@ -1,4 +1,6 @@
 #include <iostream> // should prolly use ROS_INFO
+#include <string>
+#include <vector>
 
 /***** ROS INCLUDES *****/
 #include "ros/ros.h"

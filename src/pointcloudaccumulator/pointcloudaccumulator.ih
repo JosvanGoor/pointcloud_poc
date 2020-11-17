@@ -1,3 +1,5 @@
 #include "pointcloudaccumulator.h"
 
+using namespace std;
+
 // this can contain later required includes for faster compilation

@@ -33,6 +33,7 @@ set(SOURCE_CODE
     src/main.cc
     src/pointcloudaccumulator/accumulate.cc
     src/pointcloudaccumulator/pointcloudaccumulator1.cc
+    src/pointcloudaccumulator/pointcloudaccumulator2.cc
     src/pointcloudaccumulator/radiusfilter.cc
 )
 

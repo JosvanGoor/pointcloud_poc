@@ -15,6 +15,7 @@
 #include "tf/transform_listener.h"
 
 #include <memory>
+#include <string>
 
 using Point = pcl::PointXYZ;
 using PointCloud = pcl::PointCloud<Point>;
@@ -26,13 +27,14 @@ class PointCloudAccumulator
     PointCloudPtr d_pointcloud;
     KdTree d_kdtree;
     ros::Publisher d_publisher;
+    ros::Subscriber d_pointcloud_in;
     tf::TransformListener d_tflistener;
 
     public:
         PointCloudAccumulator();
+        PointCloudAccumulator(std::string const &pc_in, std::string const &out);
         void accumulate(sensor_msgs::PointCloud2 const &cloud);
 
-        // PointCloudPTR &pointcloud();
 
     private:
         // no copies
