@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
 
     PointCloudAccumulator pca
     {
-        get_string_param("pointcloud_input"),
-        get_string_param("output_topic")
+        get_param<std::string>("pointcloud_input"),
+        get_param<std::string>("output_topic")
     };
     ros::spin();
 }

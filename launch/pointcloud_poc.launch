@@ -4,6 +4,7 @@
     <arg name = "pointcloud_input" default = "/xtion/depth_registered/points"/>
     <arg name = "output_topic" default = "/pointcloud_poc_out"/>
     <arg name = "storage_tf_frame" default = "map"/>
+    <arg name = "point_distance_m" default = "0.1"/>
 
     <group>
         <node
@@ -16,6 +17,7 @@
             <param name = "pointcloud_input" value = "$(arg pointcloud_input)"/>
             <param name = "output_topic" value = "$(arg output_topic)"/>
             <param name = "storage_tf_frame" value = "$(arg storage_tf_frame)"/>
+            <param name = "point_distance_m" value = "$(arg point_distance_m)"/>
         </node>
     </group>
 

@@ -35,7 +35,6 @@ set(SOURCE_CODE
     src/pointcloudaccumulator/pointcloudaccumulator1.cc
     src/pointcloudaccumulator/pointcloudaccumulator2.cc
     src/pointcloudaccumulator/radiusfilter.cc
-    src/utility/getstringparam.cc
 )
 
 add_executable(${PROJECT_NAME}_node ${SOURCE_CODE})

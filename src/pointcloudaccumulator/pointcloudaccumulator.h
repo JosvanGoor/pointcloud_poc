@@ -30,6 +30,7 @@ class PointCloudAccumulator
     ros::Subscriber d_pointcloud_in;
     tf::TransformListener d_tflistener;
     std::string d_transform_to;
+    float d_mindist;
 
     public:
         PointCloudAccumulator(std::string const &pc_in, std::string const &out);

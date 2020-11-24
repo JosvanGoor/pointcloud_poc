@@ -13,10 +13,10 @@ void PointCloudAccumulator::radius_filter(PointCloud const &input, float mindist
     for (auto const &point : input)
     {
         ++done_did;
-        if (d_kdtree.radiusSearch(point, mindist, indices, distances, mindist) == 0)
+        if (d_kdtree.radiusSearch(point, mindist, indices, distances, 1) == 0)
             d_pointcloud->push_back(point);
     }
 
-    ROS_INFO("Tested %lu points.", done_did);
+    // ROS_INFO("Tested %lu points.", done_did);
 
 }

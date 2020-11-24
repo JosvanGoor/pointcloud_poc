@@ -3,6 +3,9 @@
 
 #include <string>
 
-std::string get_string_param(std::string const &key);
+template <typename Type>
+Type get_param(std::string const &key);
+
+#include "getparam.f"
 
 #endif

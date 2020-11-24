@@ -1,6 +1,7 @@
 #include "utility.ih"
 
-std::string get_string_param(std::string const &key)
+template <typename Type>
+Type get_param(std::string const &key)
 {
     std::string full_key;
     if (!ros::param::search(key, full_key))
@@ -12,7 +13,7 @@ std::string get_string_param(std::string const &key)
         exit(1);
     }
 
-    std::string rval;
+    Type rval;
     ros::param::get(full_key, rval);
     return rval;
 }
