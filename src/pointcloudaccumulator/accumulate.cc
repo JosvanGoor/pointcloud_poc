@@ -1,7 +1,20 @@
 #include "pointcloudaccumulator.ih"
 
+static bool s_done = false;
+
 void PointCloudAccumulator::accumulate(sensor_msgs::PointCloud2 const &cloud)
 {
+    if (!s_done)
+    {
+        auto fields = cloud.fields;
+        for (auto f : fields)
+        {
+            ROS_INFO("Field: %s", f.name.c_str());
+            ROS_INFO("    data type: %d", int(f.datatype));
+        }
+        s_done = true;
+    }
+
     pcl::PCLPointCloud2::Ptr pcl_pc2 = boost::make_shared<pcl::PCLPointCloud2>();
     pcl::PCLPointCloud2::Ptr filtered = boost::make_shared<pcl::PCLPointCloud2>();;
     sensor_msgs::PointCloud2 post_tf;
