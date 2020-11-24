@@ -29,14 +29,15 @@ class PointCloudAccumulator
     ros::Publisher d_publisher;
     ros::Subscriber d_pointcloud_in;
     tf::TransformListener d_tflistener;
+    std::string d_transform_to;
 
     public:
-        PointCloudAccumulator();
         PointCloudAccumulator(std::string const &pc_in, std::string const &out);
         void accumulate(sensor_msgs::PointCloud2 const &cloud);
 
-
     private:
+        PointCloudAccumulator();
+        
         // no copies
         PointCloudAccumulator(PointCloudAccumulator const &) = delete;
         PointCloudAccumulator& operator=(PointCloudAccumulator const &) = delete;

@@ -5,7 +5,8 @@ PointCloudAccumulator::PointCloudAccumulator()
     d_kdtree(true),
     d_publisher(),
     d_pointcloud_in(),
-    d_tflistener()
+    d_tflistener(),
+    d_transform_to()
 {
     
 }
