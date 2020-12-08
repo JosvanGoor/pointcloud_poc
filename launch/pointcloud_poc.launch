@@ -1,6 +1,6 @@
 <launch>
 
-    <arg name="debug" default="false"/>
+    <arg name = "debug" default="false"/>
     <arg name = "pointcloud_input" default = "/xtion/depth_registered/points"/>
     <arg name = "output_topic" default = "/pointcloud_poc_out"/>
     <arg name = "storage_tf_frame" default = "map"/>
@@ -8,11 +8,11 @@
 
     <group>
         <node
-            name="pointcloud_poc"
-            pkg="pointcloud_poc"
-            output="screen"
-            type="pointcloud_poc_node"
-            launch-prefix="$(eval 'valgrind' if debug == true else '')"
+            name = "pointcloud_poc"
+            pkg = "pointcloud_poc"
+            output = "screen"
+            type = "pointcloud_poc_node"
+            launch-prefix = "$(eval 'valgrind' if debug == true else '')"
         >
             <param name = "pointcloud_input" value = "$(arg pointcloud_input)"/>
             <param name = "output_topic" value = "$(arg output_topic)"/>
